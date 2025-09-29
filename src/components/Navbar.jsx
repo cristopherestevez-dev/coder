@@ -1,5 +1,6 @@
 import React from "react";
 import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -23,7 +24,7 @@ const Navbar = () => {
         <h1 style={{ margin: 0 }}>logo</h1>
       </div>
 
-      <div
+     <div
         style={{
           flex: "2",
           display: "flex",
@@ -31,15 +32,33 @@ const Navbar = () => {
           gap: "2rem",
         }}
       >
-        <a href="#" style={{ color: "white", textDecoration: "none" }}>
+        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
           Inicio
-        </a>
-        <a href="#" style={{ color: "white", textDecoration: "none" }}>
-          Productos
-        </a>
-        <a href="#" style={{ color: "white", textDecoration: "none" }}>
-          Contacto
-        </a>
+        </Link>
+        <Link
+          to="/category/Notebooks"
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          Notebooks
+        </Link>
+        <Link
+          to="/category/Smartphones"
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          Smartphones
+        </Link>
+        <Link
+          to="/category/Consolas"
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          Consolas
+        </Link>
+        <Link
+          to="/category/Accesorios"
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          Accesorios
+        </Link>
       </div>
 
       <div
