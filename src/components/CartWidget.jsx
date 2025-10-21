@@ -1,11 +1,14 @@
 import React from 'react';
+import { useContext } from 'react';
+import { cartContext } from '../context/cartContext';
 
 const CartWidget = () => {
+  const { countCartItems }=useContext(cartContext)
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "5px", color: "white" }} >
-      🛒
-      <span>0</span>
-    </div>
+    
+      
+      <span>🛒{countCartItems()}</span>
+    
   );
 };
 

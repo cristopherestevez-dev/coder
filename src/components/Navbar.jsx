@@ -71,7 +71,11 @@ const Navbar = () => {
             cursor: "pointer",
         }}
       >
-        <CartWidget />
+        <Link to="/cart" style={{ color: "white", textDecoration: "none" }}>
+          <div style={{ cursor: "pointer" }}>
+            <CartWidget />
+          </div>
+        </Link>
       </div>
     </nav>
   );
