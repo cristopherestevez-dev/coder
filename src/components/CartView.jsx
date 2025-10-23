@@ -1,41 +1,51 @@
-import React, { useContext,useState } from "react";
+import React, { useContext, useState } from "react";
 import { cartContext } from "../context/cartContext";
 import { createOrder } from "../data/firebase";
+import FormCheckOut from "./FormCheckout";
 
 const CartView = () => {
-  const [orderCreatedId, setOrderCreated]=useState(false)
+  const [orderCreatedId, setOrderCreated] = useState(false);
   const { cartItems, removeItem, clearCart, checkout } =
     useContext(cartContext);
-
-    async function handleCheckout(){
-      const buyer={ name:"PRueba", email:"prueba@prueba", phone:"123123"}
-      const total= totalCompra;
-
-     const newOrderConfirmed= await createOrder({buyer,total,cartItems, date : new Date()})
-     alert( "gracias por tu compra")
-
-     clearCart();
-
-      setOrderCreated(newOrderConfirmed.id);
-
-      
-    }
-    if(orderCreatedId){   
-      return(
-        <div>
-        <h2>
-          ¡Gracias por tu compra!
-        </h2>
-        <p>El numero de tu orden es :{orderCreatedId} </p>
-      </div>
-      )  
-    
-    }
-
   const totalCompra = cartItems.reduce(
     (total, item) => total + item.price * item.count,
     0
   );
+
+  async function handleCheckout(buyer) {
+    if (cartItems.length === 0) {
+      alert("El carrito está vacío");
+      return;
+    }
+
+    try {
+      const newOrderConfirmed = await createOrder({
+        buyer,
+        total: totalCompra,
+        cartItems,
+        date: new Date(),
+      });
+
+      alert(" ¡Gracias por tu compra!");
+      clearCart();
+      setOrderCreated(newOrderConfirmed.id);
+    } catch (error) {
+      console.error(" Error al crear la orden:", error);
+      alert("Ocurrió un error al generar la orden. Intente nuevamente.");
+    }
+  }
+
+  if (orderCreatedId) {
+    return (
+      <div style={{ marginTop: "100px", textAlign: "center" }}>
+        <h2>¡Gracias por tu compra!</h2>
+        <p>
+          Tu número de orden es: <b>{orderCreatedId}</b>
+        </p>
+      </div>
+    );
+  }
+
   const handleClearCart = () => {
     const confirmClear = window.confirm("Vas a eliminar todo de tu carrito");
     if (confirmClear) clearCart();
@@ -116,35 +126,10 @@ const CartView = () => {
             Total a pagar: ${totalCompra.toFixed(2)}
           </h3>
 
-          <button
-            onClick={handleClearCart}
-            style={{
-              backgroundColor: "#999",
-              color: "white",
-              border: "none",
-              padding: "0.6rem 1rem",
-              borderRadius: "6px",
-              cursor: "pointer",
-              margin:"10px"
-            }}
-          >
-            Vaciar carrito
-          </button>
-
-          <button
-            onClick={handleCheckout}
-            style={{
-              backgroundColor: "#28a745",
-              color: "white",
-              border: "none",
-              padding: "0.6rem 1rem",
-              borderRadius: "6px",
-              cursor: "pointer",
-              margin:"10px"
-            }}
-          >
-            Finalizar compra
-          </button>
+          <FormCheckOut
+            handleCheckout={handleCheckout}
+            handleClearCart={handleClearCart}
+          />
         </>
       )}
     </div>

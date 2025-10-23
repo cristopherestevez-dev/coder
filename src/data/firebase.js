@@ -46,11 +46,18 @@ export async function getProductsByCategory( categoryParam){
   return dataDocs;
 
 }
-export async function createOrder(orderData){
- const ordersRef= collection(db,"orders");
- const newDoc= await addDoc(ordersRef,orderData)
- return newDoc;
+export async function createOrder(orderData) {
+  try {
+    const ordersRef = collection(db, "orders");
+    const newDoc = await addDoc(ordersRef, orderData);
+    console.log("Orden creada con ID:", newDoc.id);
+    return { id: newDoc.id, ...orderData }; 
+  } catch (error) {
+    console.error("Error al crear la orden:", error);
+    throw error;
+  }
 }
+
 
 export async function subirProducts(){
 
