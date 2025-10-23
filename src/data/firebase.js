@@ -1,7 +1,16 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
-import productos from "./productos.json"
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
+import productos from "./productos.json";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA9dNRdtpiBFn6E-xEZEPQdpkISmKk07n8",
@@ -9,62 +18,57 @@ const firebaseConfig = {
   projectId: "react-coder-b66a0",
   storageBucket: "react-coder-b66a0.firebasestorage.app",
   messagingSenderId: "368370732763",
-  appId: "1:368370732763:web:e14821e32bf92561a986fe"
+  appId: "1:368370732763:web:e14821e32bf92561a986fe",
 };
 
-
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app)
+const db = getFirestore(app);
 
-export async function getProducts(){
+export async function getProducts() {
+  const productsRef = collection(db, "products");
+  const productsSnapshot = await getDocs(productsRef);
 
-    const productsRef=collection(db, "products");
-    const productsSnapshot= await getDocs(productsRef)
-
-    const dataDocs= productsSnapshot.docs.map(doc=>
-        { return { id: doc.id , ...doc.data()}})
-    
-    
-    return dataDocs;
-
-
-}
-
-export async function getProductById(idParam){
-    const docRef= doc(db,"products", idParam)
-    const documentSnapshot=await getDoc(docRef);
-    return {id: documentSnapshot.id, ...documentSnapshot.data()}
-}
-export async function getProductsByCategory( categoryParam){
-  const productsRef= collection(db,"products");
-  const q= query(productsRef, where ("category", "==", categoryParam ));
-
-  const productsSnapshot= await getDocs(q);
-
-  const dataDocs= productsSnapshot.docs.map( doc => ({id:doc.id, ...doc.data() }))
+  const dataDocs = productsSnapshot.docs.map((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
 
   return dataDocs;
+}
 
+export async function getProductById(idParam) {
+  const docRef = doc(db, "products", idParam);
+  const documentSnapshot = await getDoc(docRef);
+  return { id: documentSnapshot.id, ...documentSnapshot.data() };
+}
+export async function getProductsByCategory(categoryParam) {
+  const productsRef = collection(db, "products");
+  const q = query(productsRef, where("category", "==", categoryParam));
+
+  const productsSnapshot = await getDocs(q);
+
+  const dataDocs = productsSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  return dataDocs;
 }
 export async function createOrder(orderData) {
   try {
     const ordersRef = collection(db, "orders");
     const newDoc = await addDoc(ordersRef, orderData);
     console.log("Orden creada con ID:", newDoc.id);
-    return { id: newDoc.id, ...orderData }; 
+    return { id: newDoc.id, ...orderData };
   } catch (error) {
     console.error("Error al crear la orden:", error);
     throw error;
   }
 }
 
-
-export async function subirProducts(){
-
-    for ( let item of productos){
-        const newDoc= await addDoc(collection(db,"products"),item)
-    }
-
+export async function subirProducts() {
+  for (let item of productos) {
+    const newDoc = await addDoc(collection(db, "products"), item);
+  }
 }
 
 export default app;
