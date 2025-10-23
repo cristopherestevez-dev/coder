@@ -2,25 +2,41 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import productos from "../data/productos.json";
 import Item from "./Item";
-
+import { getProducts , getProductsByCategory } from "../data/firebase";
 
 const ItemListContainer = ({ greeting }) => {
   const [items, setItems] = useState([]);
-  const { categoryId } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { categoryParam } = useParams();
 
   useEffect(() => {
-    const getItems = new Promise((resolve) => {
-      setTimeout(() => {
-        if (categoryId) {
-          resolve(productos.filter((prod) => prod.category === categoryId));
-        } else {
-          resolve(productos);
-        }
-      }, 300);
-    });
+    setLoading(true);
+    setError(null);
+    setItems([]);
 
-    getItems.then((res) => setItems(res));
-  }, [categoryId]);
+    const fetchData = async () => {
+      try {
+        let products;
+        if (categoryParam) {
+          products = await getProductsByCategory(categoryParam);
+        } else {
+          products = await getProducts();
+        }
+        setItems(products);
+      } catch (err) {
+        console.error("Error al obtener productos:", err);
+        setError("Hubo un error al cargar los productos");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [categoryParam]);
+
+  if (loading) return <p>Cargando productos...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="items-container">
@@ -35,4 +51,3 @@ const ItemListContainer = ({ greeting }) => {
 };
 
 export default ItemListContainer;
-

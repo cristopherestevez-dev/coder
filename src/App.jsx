@@ -6,6 +6,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import CartWidget from "./components/CartWidget";
 import { CartProvider } from "./context/cartContext";
 import CartView from "./components/CartView";
+import app, { subirProducts } from "./data/firebase"
 
 
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <CartProvider >
       <Navbar />
+     
 
       <Routes>
         <Route
@@ -25,7 +27,7 @@ function App() {
             <ItemListContainer greeting="¡Bienvenidos a nuestra tienda!" />
           }
         />
-        <Route path="/category/:categoryId" element={<ItemListContainer />} />
+        <Route path="/category/:categoryParam" element={<ItemListContainer />} />
         <Route path="/item/:itemId" element={<ItemDetailContainer />} />
         <Route path="/cart" element={<CartView />} />
       </Routes>

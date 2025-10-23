@@ -1,9 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { cartContext } from "../context/cartContext";
+import { createOrder } from "../data/firebase";
 
 const CartView = () => {
+  const [orderCreatedId, setOrderCreated]=useState(false)
   const { cartItems, removeItem, clearCart, checkout } =
     useContext(cartContext);
+
+    async function handleCheckout(){
+      const buyer={ name:"PRueba", email:"prueba@prueba", phone:"123123"}
+      const total= totalCompra;
+
+     const newOrderConfirmed= await createOrder({buyer,total,cartItems, date : new Date()})
+     alert( "gracias por tu compra")
+
+     clearCart();
+
+      setOrderCreated(newOrderConfirmed.id);
+
+      
+    }
+    if(orderCreatedId){   
+      return(
+        <div>
+        <h2>
+          ¡Gracias por tu compra!
+        </h2>
+        <p>El numero de tu orden es :{orderCreatedId} </p>
+      </div>
+      )  
+    
+    }
 
   const totalCompra = cartItems.reduce(
     (total, item) => total + item.price * item.count,
@@ -105,7 +132,7 @@ const CartView = () => {
           </button>
 
           <button
-            onClick={checkout}
+            onClick={handleCheckout}
             style={{
               backgroundColor: "#28a745",
               color: "white",

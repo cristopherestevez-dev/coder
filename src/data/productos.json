@@ -9,7 +9,7 @@
     "image": "/images/notebooks/asus-tuf.jpg"
   },
   {
-    "id": 2,
+    
     "title": "MacBook Pro 14'' M2",
     "description": "Chip M2 Pro, 16GB RAM, 1TB SSD",
     "price": 2400,
@@ -18,7 +18,7 @@
     "image": "/images/notebooks/macbook-pro.jpg"
   },
   {
-    "id": 3,
+    
     "title": "Lenovo IdeaPad 3",
     "description": "AMD Ryzen 5, 8GB RAM, SSD 256GB",
     "price": 750,
@@ -27,7 +27,7 @@
     "image": "/images/notebooks/lenovo-ideapad.jpg"
   },
   {
-    "id": 4,
+    
     "title": "Dell XPS 13",
     "description": "Intel i5, 8GB RAM, SSD 512GB",
     "price": 1200,
@@ -36,7 +36,7 @@
     "image": "/images/notebooks/dell-xps.jpg"
   },
   {
-    "id": 5,
+    
     "title": "iPhone 15 Pro",
     "description": "Pantalla 6.1'' OLED, 256GB, Titanium",
     "price": 1300,
@@ -45,7 +45,7 @@
     "image": "/images/smartphones/iphone15pro.jpg"
   },
   {
-    "id": 6,
+    
     "title": "Samsung Galaxy S23 Ultra",
     "description": "Pantalla 6.8'' AMOLED, 12GB RAM, 512GB",
     "price": 1250,
@@ -54,7 +54,7 @@
     "image": "/images/smartphones/galaxy-s23.jpg"
   },
   {
-    "id": 7,
+    
     "title": "Xiaomi 13T Pro",
     "description": "Pantalla 6.7'' AMOLED, 12GB RAM, 256GB",
     "price": 800,
@@ -63,7 +63,7 @@
     "image": "/images/smartphones/xiaomi-13t.jpg"
   },
   {
-    "id": 8,
+    
     "title": "Google Pixel 8",
     "description": "Pantalla 6.3'' OLED, 128GB, Android 14",
     "price": 900,
@@ -72,7 +72,7 @@
     "image": "/images/smartphones/pixel-8.jpg"
   },
   {
-    "id": 9,
+  
     "title": "Auriculares Sony WH-1000XM5",
     "description": "Bluetooth, cancelación de ruido",
     "price": 380,
@@ -81,7 +81,7 @@
     "image": "/images/accesorios/sony-xm5.jpg"
   },
   {
-    "id": 10,
+    
     "title": "Logitech MX Master 3S",
     "description": "Mouse inalámbrico ergonómico",
     "price": 120,
@@ -90,7 +90,7 @@
     "image": "/images/accesorios/mx-master-3s.jpg"
   },
   {
-    "id": 11,
+    
     "title": "Teclado Mecánico Keychron K2",
     "description": "Switches Gateron Red, retroiluminado",
     "price": 95,
@@ -99,7 +99,7 @@
     "image": "/images/accesorios/keychron-k2.jpg"
   },
   {
-    "id": 12,
+    
     "title": "Webcam Logitech StreamCam",
     "description": "1080p 60fps, micrófono estéreo",
     "price": 160,
@@ -108,7 +108,7 @@
     "image": "/images/accesorios/logitech-streamcam.jpg"
   },
   {
-    "id": 13,
+    
     "title": "Monitor LG UltraGear 27''",
     "description": "QHD, 165Hz, 1ms, G-Sync",
     "price": 450,
@@ -117,7 +117,7 @@
     "image": "/images/monitores/lg-ultragear.jpg"
   },
   {
-    "id": 14,
+    
     "title": "Samsung Odyssey G9 49''",
     "description": "QHD Doble, 240Hz, curva 1000R",
     "price": 1400,
@@ -126,7 +126,7 @@
     "image": "/images/monitores/samsung-g9.jpg"
   },
   {
-    "id": 15,
+    
     "title": "ASUS ProArt 32''",
     "description": "4K HDR, calibrado profesional",
     "price": 950,
@@ -135,7 +135,7 @@
     "image": "/images/monitores/asus-proart.jpg"
   },
   {
-    "id": 16,
+    
     "title": "AOC 24G2 24''",
     "description": "FHD, 144Hz, FreeSync",
     "price": 200,
@@ -144,7 +144,7 @@
     "image": "/images/monitores/aoc-24g2.jpg"
   },
   {
-    "id": 17,
+    
     "title": "PlayStation 5",
     "description": "Consola Sony PS5 con mando DualSense",
     "price": 600,
@@ -153,7 +153,7 @@
     "image": "/images/consolas/ps5.jpg"
   },
   {
-    "id": 18,
+    
     "title": "Xbox Series X",
     "description": "Consola Microsoft 1TB SSD",
     "price": 550,
@@ -162,7 +162,7 @@
     "image": "/images/consolas/xbox-series-x.jpg"
   },
   {
-    "id": 19,
+    
     "title": "Nintendo Switch OLED",
     "description": "Consola híbrida 64GB, pantalla OLED",
     "price": 350,
@@ -171,7 +171,7 @@
     "image": "/images/consolas/switch-oled.jpg"
   },
   {
-    "id": 20,
+    
     "title": "Steam Deck 512GB",
     "description": "Consola portátil gaming con Linux",
     "price": 650,
