@@ -12,13 +12,14 @@ import {
 } from "firebase/firestore";
 import productos from "./productos.json";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyA9dNRdtpiBFn6E-xEZEPQdpkISmKk07n8",
-  authDomain: "react-coder-b66a0.firebaseapp.com",
-  projectId: "react-coder-b66a0",
-  storageBucket: "react-coder-b66a0.firebasestorage.app",
+  apiKey: import.meta.env.VITE_FIRESTORE_APIKEY,
+  authDomain: import.meta.env.VITE_FIRESTORE_AUTHDOMAIN,
+  projectId:import.meta.env.VITE_FIRESTORE_PROJECTID,
+  storageBucket: import.meta.env.VITE_FIRESTORE_BUCKET,
   messagingSenderId: "368370732763",
-  appId: "1:368370732763:web:e14821e32bf92561a986fe",
+  appId: import.meta.env.VITE_FIRESTORE_APPID,
 };
 
 const app = initializeApp(firebaseConfig);
